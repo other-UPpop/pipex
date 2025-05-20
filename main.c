@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:52:32 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:55:38 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@ static int	ok_access(t_arg arg)
 	return (1);
 }
 
-static void	wait_free(t_pid pid, t_arg arg)
+static int	wait_free(t_pid pid, t_arg arg)
 {
-	waitpid(pid.p1, NULL, 0);
-	waitpid(pid.p2, NULL, 0);
+	int	status1;
+	int	status2;
+
+	status1 = 0;
+	status2 = 0;
+	waitpid(pid.p1, &status1, 0);
+	waitpid(pid.p2, &status2, 0);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
+	if (status1 != 0)
+		return (0);
+	else if (status2 != 0)
+		return (127);
+	return (0);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -51,6 +61,6 @@ int	main(int argc, char **argv, char **envp)
 	if (pid.p2 == 0)
 		pid2_cmd(arg, fd, pipefd, envp);
 	parent_process_close(pipefd, fd);
-	wait_free(pid, arg);
+	open = wait_free(pid, arg);
 	return (open);
 }
