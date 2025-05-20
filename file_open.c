@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:29:33 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:34:02 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_file_open(t_arg arg, char **envp)
 		if (access(arg.c_arg[3], W_OK) != 0)
 			error_print_open2_file(arg);
 		if (access(arg.c_arg[0], (F_OK) != 0))
-			error_print_open_file(arg);
+			error_print_open1_file(arg);
 		else
 			error_print_open3_file(arg);
 		pid = fork();
@@ -59,7 +59,7 @@ int	out_file_open(t_arg arg, t_fd fd)
 	{
 		error_print_open2_file(arg);
 		if (access(arg.c_arg[0], (F_OK) != 0))
-			error_print_open_file(arg);
+			error_print_open1_file(arg);
 		close(fd.get_fd);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
