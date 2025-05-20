@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:19:42 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 14:15:03 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 15:06:38 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ char	*get_cmd_path(char *arg, char **envp)
 	div_path = ft_split(all_path, ':');
 	if (!div_path)
 		return (NULL);
+	free(all_path);
 	ok_path = get_ok_path(div_path, ok_path, arg);
 	return (ok_path);
 }
