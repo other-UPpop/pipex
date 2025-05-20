@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 18:10:36 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 22:48:36 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	execve_cmd(char *cmd, char **envp, t_arg arg)
 	cmd_path = get_cmd_path(args[0], envp);
 	if (!cmd_path)
 	{
-		if (access(arg.c_arg[0], (W_OK | F_OK | R_OK)) == 0)
-			error_print(args[0]);
+	//if (access(arg.c_arg[0], (W_OK | F_OK | R_OK))  0)
+		error_print(args[0]);
 		free_args(args);
 		exit (1);
 	}
