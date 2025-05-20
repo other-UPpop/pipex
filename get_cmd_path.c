@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:19:42 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 15:23:19 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 15:40:05 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ char	**put_cmd(char **cmd, char **aft_str)
 				cmd[j] = str_join(cmd, j, i, aft_str);
 				i++;
 			}
-			j++;
+			if (!(ft_strnstr(cmd[j], "sleep", ft_strlen(cmd[j]))
+					&& ft_isdigit(aft_str[i + 1]) == 1))
+				j++;
 		}
 		i++;
 	}
