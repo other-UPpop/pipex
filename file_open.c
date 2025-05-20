@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 22:55:15 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 22:56:20 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	get_file_open(t_arg arg)
 			error_print_open3_file(arg);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
+		return (0);
 	}
 	return (get_file);
 }
