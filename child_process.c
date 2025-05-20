@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 22:52:38 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:24:58 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	error_print(char *arg)
 	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
 }
 
-static void	execve_cmd(char *cmd, char **envp)
+void	execve_cmd(char *cmd, char **envp)
 {
 	char	**args;
 	char	*cmd_path;
