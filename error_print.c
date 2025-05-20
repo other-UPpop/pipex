@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 23:28:36 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:35:28 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:11:47 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,9 @@ void	error_print_open1_file(t_arg arg)
 
 void	error_print_cmd(char *arg)
 {
-	char	*e_str1;
 	char	*e_str2;
 
-	e_str1 = "bash: ";
 	e_str2 = ": command not found\n";
-	write(STDERR_FILENO, e_str1, ft_strlen(e_str1));
 	write(STDERR_FILENO, arg, ft_strlen(arg));
 	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
 }
