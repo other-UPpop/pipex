@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 23:28:36 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:34:16 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:35:28 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	error_print_open3_file(t_arg arg)
 	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
 }
 
-static void	error_print_open2_file(t_arg arg)
+void	error_print_open2_file(t_arg arg)
 {
 	char	*e_str1;
 	char	*e_str2;
@@ -36,7 +36,7 @@ static void	error_print_open2_file(t_arg arg)
 	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
 }
 
-static void	error_print_open1_file(t_arg arg)
+void	error_print_open1_file(t_arg arg)
 {
 	char	*e_str1;
 	char	*e_str2;
