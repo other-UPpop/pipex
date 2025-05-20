@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 01:22:15 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 01:45:55 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	get_file_open(t_arg arg, char **envp)
 		if (access(arg.c_arg[3], W_OK) != 0)
 		{
 			error_print_open2_file(arg);
+			pid = fork();
+			if (pid == 0)
+				sleep_var(arg, envp);
+			waitpid(pid, NULL, 0);
 		}
 		if (access(arg.c_arg[0], (F_OK) != 0))
 			error_print_open1_file(arg);
 		else
 			error_print_open3_file(arg);
-		pid = fork();
-		if (pid == 0)
-			sleep_var(arg, envp);
-		waitpid(pid, NULL, 0);
 	}
 	return (get_file);
 }
