@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/19 21:19:20 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 12:50:36 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_file_open(t_arg arg)
 		error_print_file(arg);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
-		exit (127);
+		exit (0);
 	}
 	return (get_file);
 }
@@ -51,7 +51,7 @@ int	out_file_open(t_arg arg, t_fd fd)
 		close(fd.get_fd);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
-		exit (127);
+		exit (1);
 	}
 	return (get_file);
 }
