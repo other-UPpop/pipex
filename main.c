@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 14:17:36 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 15:13:01 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int	main(int argc, char **argv, char **envp)
 	waitpid(pid.p2, NULL, 0);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
-	return (1);
+	return (0);
 }
