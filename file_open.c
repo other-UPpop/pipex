@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:56:58 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:20:53 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	sleep_var(t_arg arg, char **envp)
 	while (arg.c_arg[i])
 	{
 		if (ft_strnstr(arg.c_arg[i], "sleep", ft_strlen(arg.c_arg[i])))
-			execve_cmd(arg.c_arg[i], envp);
+			execve_cmd(arg.c_arg[i], envp, arg);
 		i++;
 	}
 }

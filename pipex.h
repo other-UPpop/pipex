@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:33:50 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:21:16 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	error_print_open1_file(t_arg arg);
 void	error_print_open2_file(t_arg arg);
 void	error_print_open3_file(t_arg arg);
 void	error_print_cmd(char *arg);
-void	execve_cmd(char *cmd, char **envp);
+void	execve_cmd(char *cmd, char **envp, t_arg arg);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 00:13:11 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:20:09 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	execve_cmd(char *cmd, char **envp)
+void	execve_cmd(char *cmd, char **envp, t_arg arg)
 {
 	char	**args;
 	char	*cmd_path;
@@ -23,6 +23,8 @@ void	execve_cmd(char *cmd, char **envp)
 	{
 		error_print_cmd(args[0]);
 		free_args(args);
+		free_args(arg.c_arg);
+		free_args(arg.s_arg);
 		exit(127);
 	}
 	execve(cmd_path, args, envp);
@@ -39,7 +41,7 @@ void	pid1_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
 	close(pipefd[1]);
 	close(fd.get_fd);
 	close(fd.out_fd);
-	execve_cmd(arg.c_arg[1], envp);
+	execve_cmd(arg.c_arg[1], envp, arg);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
 	exit(1);
@@ -53,7 +55,7 @@ void	pid2_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
 	close(pipefd[1]);
 	close(fd.get_fd);
 	close(fd.out_fd);
-	execve_cmd(arg.c_arg[2], envp);
+	execve_cmd(arg.c_arg[2], envp, arg);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
 	exit(1);
