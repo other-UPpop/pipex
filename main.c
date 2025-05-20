@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 02:20:08 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 02:30:09 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	wait_free(t_pid pid, t_arg arg)
 	status2 = 0;
 	error_n = 0;
 	grep = 0;
-	if (ft_strnstr(arg.c_arg[3], "grep", ft_strlen(arg.c_arg[3])))
+	if (ft_strnstr(arg.c_arg[2], "grep", ft_strlen(arg.c_arg[2])))
 		grep = 1;
 	if (access(arg.c_arg[3], W_OK) != 0)
 		error_n = 1;
