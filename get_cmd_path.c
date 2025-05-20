@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:19:42 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 15:06:38 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 15:23:19 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char	**put_cmd(char **cmd, char **aft_str)
 		{
 			cmd[j] = ft_strdup(aft_str[i]);
 			while ((aft_str[i + 1] && aft_str[i + 1][0] == '-')
-				|| ft_strncmp(cmd[j], "sleep", 6) == 0)
+				|| ft_strncmp(cmd[j], "sleep", 6) == 0
+				|| ft_strcmp(cmd[j], "grep", 5) == 0)
 			{
 				cmd[j] = str_join(cmd, j, i, aft_str);
 				i++;
