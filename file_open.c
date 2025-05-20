@@ -6,11 +6,23 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 17:39:44 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 17:48:09 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static void	error_print_open3_file(t_arg arg)
+{
+	char	*e_str1;
+	char	*e_str2;
+
+	e_str1 = "bash: ";
+	e_str2 = ": Permission denied\n";
+	write(STDERR_FILENO, e_str1, ft_strlen(e_str1));
+	write(STDERR_FILENO, arg.c_arg[0], ft_strlen(arg.c_arg[0]));
+	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
+}
 
 static void	error_print_open2_file(t_arg arg)
 {
@@ -43,7 +55,11 @@ int	get_file_open(t_arg arg)
 	get_file = open(arg.c_arg[0], O_RDONLY);
 	if (get_file < 0)
 	{
-		error_print_open_file(arg);
+		if (access(arg.c_arg[3], W_OK) != 0)
+			error_print_open2_file(arg);
+		if (access(arg.c_arg[0], (F_OK) != 0))
+			error_print_open_file(arg);
+		error_print_open3_file(arg);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
 		exit (0);
