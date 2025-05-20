@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:13:33 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 16:31:07 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 16:44:41 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*str_join(char **cmd, size_t j, size_t i, char **aft_str)
 char	*sleep_cmd(char **cmd, char **aft_str, size_t *i, size_t j)
 {
 	char	*tmp;
+	char	*str;
 	int		num;
 
 	num = 0;
@@ -68,7 +69,9 @@ char	*sleep_cmd(char **cmd, char **aft_str, size_t *i, size_t j)
 	}
 	tmp = ft_strjoin(cmd[j], " ");
 	free (cmd[j]);
-	cmd[j] = ft_strjoin(tmp, ft_itoa(num));
+	str = ft_itoa(num);
+	cmd[j] = ft_strjoin(tmp, str);
+	free (str);
 	free (tmp);
 	return (cmd[j]);
 }
