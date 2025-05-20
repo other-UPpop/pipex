@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:07:37 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/19 21:21:07 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/19 21:45:10 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	get_arg_ck(int argc, char **argv, t_arg *arg)
 		arg->s_arg = ft_split(sp_str, ' ');
 	if (arg->s_arg)
 		arg->c_arg = div_str(arg->s_arg);
+	free(sp_str);
 }

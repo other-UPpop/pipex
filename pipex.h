@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/19 21:22:13 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/19 21:40:22 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 # include <errno.h>
 
