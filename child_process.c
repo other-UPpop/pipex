@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 13:07:51 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 14:16:17 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	pid1_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
 	execve_cmd(arg.c_arg[1], envp);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
-	exit(1);
+//	exit(1);
 }
 
 void	pid2_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
@@ -68,5 +68,5 @@ void	pid2_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
 	execve_cmd(arg.c_arg[2], envp);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
-	exit(1);
+//	exit(1);
 }
