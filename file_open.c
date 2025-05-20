@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 12:50:36 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 16:36:41 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ static void	error_print_file(t_arg arg)
 	char	*e_str1;
 	char	*e_str2;
 
-	e_str1 = ": ";
+	e_str1 = "bash: ";
 	e_str2 = ": No such file or directory\n";
-	write(STDERR_FILENO, arg.s_arg[1], ft_strlen(arg.s_arg[1]));
 	write(STDERR_FILENO, e_str1, ft_strlen(e_str1));
 	write(STDERR_FILENO, arg.s_arg[0], ft_strlen(arg.s_arg[0]));
 	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
