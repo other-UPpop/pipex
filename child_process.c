@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 00:11:21 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 00:13:11 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	execve_cmd(char *cmd, char **envp)
 	{
 		error_print_cmd(args[0]);
 		free_args(args);
-		exit (1);
+		exit(127);
 	}
 	execve(cmd_path, args, envp);
 	perror("execve");
