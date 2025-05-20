@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:54:00 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:56:03 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ static void	sleep_var(t_arg arg, char **envp)
 	}
 }
 
-static void	file_wait_free(pid_t pid, t_arg arg)
+static void	file_wait_free(pid_t pid, t_arg arg, int e_num)
 {
 	waitpid(pid, NULL, 0);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
+	if (e_num == 1)
+		exit (1);
+	exit (0);
 }
 
 int	get_file_open(t_arg arg, char **envp)
@@ -39,6 +42,7 @@ int	get_file_open(t_arg arg, char **envp)
 	pid_t	pid;
 
 	get_file = open(arg.c_arg[0], O_RDONLY);
+	e_num = 0;
 	if (get_file < 0)
 	{
 		if (access(arg.c_arg[3], W_OK) != 0)
@@ -53,10 +57,7 @@ int	get_file_open(t_arg arg, char **envp)
 		pid = fork();
 		if (pid == 0)
 			sleep_var(arg, envp);
-		file_wait_free(pid, arg);
-		if (e_num == 1)
-			exit (1);
-		exit (0);
+		file_wait_free_exit(pid, arg, e_num);
 	}
 	return (get_file);
 }
