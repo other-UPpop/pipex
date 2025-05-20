@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:13:33 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 16:07:58 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 16:31:07 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,18 @@ char	*str_join(char **cmd, size_t j, size_t i, char **aft_str)
 char	*sleep_cmd(char **cmd, char **aft_str, size_t *i, size_t j)
 {
 	char	*tmp;
+	int		num;
 
-	if (ft_strncmp(cmd[j], "sleep", 6) == 0)
+	num = 0;
+	while (ft_atoi(aft_str[*i + 1]) != 0
+		|| ft_isdigit(ft_atoi(aft_str[*i + 1])) == 1)
 	{
-		while (ft_atoi(aft_str[*i + 1]) != 0
-			|| ft_isdigit(ft_atoi(aft_str[*i + 1])) == 1)
-		{
-			tmp = ft_strjoin(cmd[j], " ");	
-			free (cmd[j]);
-			cmd[j] = ft_strjoin(tmp, aft_str[*i + 1]);
-			free (tmp);
-			*i += *i + 1;
-		}
+		num += ft_atoi(aft_str[*i + 1]);
+		*i += 1;
 	}
+	tmp = ft_strjoin(cmd[j], " ");
+	free (cmd[j]);
+	cmd[j] = ft_strjoin(tmp, ft_itoa(num));
+	free (tmp);
 	return (cmd[j]);
 }
