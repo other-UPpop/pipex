@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:34:02 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:46:16 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	get_file_open(t_arg arg, char **envp)
 		waitpid(pid, NULL, 0);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
+		if (access(arg.c_arg[3], W_OK) != 0)
+			exit (1);
 		exit (0);
 	}
 	return (get_file);
