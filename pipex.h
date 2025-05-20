@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:23:00 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:31:24 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int		get_file_open(t_arg arg, char **envp);
 void	get_arg_ck(int argc, char **argv, t_arg *arg);
 char	*sleep_cmd(char **cmd, char **aft_str, size_t *i, size_t j);
 char	*str_join(char **cmd, size_t j, size_t i, char **aft_str);
+void	error_print_open1_file(t_arg arg);
+void	error_print_open2_file(t_arg arg);
+void	error_print_open3_file(t_arg arg);
+void	error_print_cmd(char *arg);
 void	execve_cmd(char *cmd, char **envp);
 
 #endif

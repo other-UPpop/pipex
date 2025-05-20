@@ -6,23 +6,11 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:24:58 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:31:34 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-static void	error_print(char *arg)
-{
-	char	*e_str1;
-	char	*e_str2;
-
-	e_str1 = "bash: ";
-	e_str2 = ": command not found\n";
-	write(STDERR_FILENO, e_str1, ft_strlen(e_str1));
-	write(STDERR_FILENO, arg, ft_strlen(arg));
-	write(STDERR_FILENO, e_str2, ft_strlen(e_str2));
-}
 
 void	execve_cmd(char *cmd, char **envp)
 {
@@ -33,7 +21,7 @@ void	execve_cmd(char *cmd, char **envp)
 	cmd_path = get_cmd_path(args[0], envp);
 	if (!cmd_path)
 	{
-		error_print(args[0]);
+		error_print_cmd(args[0]);
 		free_args(args);
 		exit (1);
 	}
