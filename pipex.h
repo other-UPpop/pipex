@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 00:21:16 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 03:33:31 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	pid2_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp);
 char	*get_cmd_path(char *arg, char **envp);
 char	**put_cmd(char **cmd, char **aft_str);
 size_t	count_cmds(char	**aft_str);
-int		out_file_open(t_arg arg, t_fd fd);
+int		out_file_open(t_arg arg, t_fd fd, char **envp);
 int		get_file_open(t_arg arg, char **envp);
 void	get_arg_ck(int argc, char **argv, t_arg *arg);
 char	*sleep_cmd(char **cmd, char **aft_str, size_t *i, size_t j);

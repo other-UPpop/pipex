@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 03:18:17 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 03:32:45 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv, char **envp)
 	get_arg_ck(argc, argv, &arg);
 	fd.get_fd = get_file_open(arg, envp);
 	open = ok_access(arg);
-	fd.out_fd = out_file_open(arg, fd);
+	fd.out_fd = out_file_open(arg, fd, envp);
 	if (pipe_init(pipefd) == 1)
 		return (-1);
 	pid.p1 = fork();
