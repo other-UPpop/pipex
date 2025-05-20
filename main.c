@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 02:30:09 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 02:51:34 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ static int	wait_free(t_pid pid, t_arg arg)
 	waitpid(pid.p2, &status2, 0);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
-	if (error_n == 1 || grep == 1)
+	if (error_n == 1 || grep == 0 || status2 == 256)
 		return (1);
-	else if (status1 != 0)
-		return (0);
-	else if (status2 != 0)
+	else if (status2 == 32512 || status2 != 0)
 		return (127);
 	return (0);
 }
