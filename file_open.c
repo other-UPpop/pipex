@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 17:56:45 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 22:55:15 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	out_file_open(t_arg arg, t_fd fd)
 	get_file = open(arg.c_arg[3], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (get_file < 0)
 	{
-		//error_print_open2_file(arg);
-		// if (access(arg.c_arg[0], (F_OK) != 0))
-			// error_print_open_file(arg);
+		error_print_open2_file(arg);
+		 if (access(arg.c_arg[0], (F_OK) != 0))
+			error_print_open_file(arg);
 		close(fd.get_fd);
 		free_args(arg.c_arg);
 		free_args(arg.s_arg);
