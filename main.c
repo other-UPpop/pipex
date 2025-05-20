@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:04:50 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 01:21:09 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 01:59:34 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv, char **envp)
 	if (pipe_init(pipefd) == 1)
 		return (-1);
 	pid.p1 = fork();
-	if (pid.p1 == 0 && fd.get_fd > 0)
+	if (pid.p1 == 0)
 		pid1_cmd(arg, fd, pipefd, envp);
 	pid.p2 = fork();
 	if (pid.p2 == 0)
