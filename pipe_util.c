@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:13:33 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/19 21:21:23 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 13:40:07 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,15 @@ void	parent_process_close(int pipefd[2], t_fd fd)
 	close(pipefd[1]);
 	close(fd.get_fd);
 	close(fd.out_fd);
+}
+
+char	*str_join(char **cmd, size_t j, size_t i, char **aft_str)
+{
+	char	*tmp;
+
+	tmp = ft_strjoin(cmd[j], " ");
+	free (cmd[j]);
+	cmd[j] = ft_strjoin(tmp, aft_str[i + 1]);
+	free (tmp);
+	return (cmd[j]);
 }

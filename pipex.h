@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/19 21:40:22 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 13:40:29 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ size_t	count_cmds(char	**aft_str);
 int		out_file_open(t_arg arg, t_fd fd);
 int		get_file_open(t_arg arg);
 void	get_arg_ck(int argc, char **argv, t_arg *arg);
+char	*str_join(char **cmd, size_t j, size_t i, char **aft_str);
 
 #endif
