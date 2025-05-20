@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:11:09 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 23:46:16 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/20 23:54:00 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,27 @@ static void	sleep_var(t_arg arg, char **envp)
 	}
 }
 
+static void	file_wait_free(pid_t pid, t_arg arg)
+{
+	waitpid(pid, NULL, 0);
+	free_args(arg.c_arg);
+	free_args(arg.s_arg);
+}
+
 int	get_file_open(t_arg arg, char **envp)
 {
 	int		get_file;
+	int		e_num;
 	pid_t	pid;
 
 	get_file = open(arg.c_arg[0], O_RDONLY);
 	if (get_file < 0)
 	{
 		if (access(arg.c_arg[3], W_OK) != 0)
+		{
 			error_print_open2_file(arg);
+			e_num++;
+		}
 		if (access(arg.c_arg[0], (F_OK) != 0))
 			error_print_open1_file(arg);
 		else
@@ -42,10 +53,8 @@ int	get_file_open(t_arg arg, char **envp)
 		pid = fork();
 		if (pid == 0)
 			sleep_var(arg, envp);
-		waitpid(pid, NULL, 0);
-		free_args(arg.c_arg);
-		free_args(arg.s_arg);
-		if (access(arg.c_arg[3], W_OK) != 0)
+		file_wait_free(pid, arg);
+		if (e_num == 1)
 			exit (1);
 		exit (0);
 	}
