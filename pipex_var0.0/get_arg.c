@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:07:37 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/20 13:46:03 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/21 18:01:17 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static size_t	get_total_len(int argc, char **argv)
 	{
 		if (ft_strlen(argv[i]) == 0)
 			exit (0);
-		total += strlen(argv[i]) + 1;
+		total += ft_strlen(argv[i]) + 1;
 		i++;
 	}
 	return (total);
