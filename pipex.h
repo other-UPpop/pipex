@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 21:07:12 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:57:30 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ typedef struct s_pidfd
 	int		pipefd[2];
 }	t_pidfd;
 
-typedef struct s_pid
-{
-	pid_t	p1;
-	pid_t	p2;
-	int		pipefd[2];
-}	t_pid;
-
 typedef struct s_error
 {
 	bool	in_file;
@@ -62,8 +55,20 @@ typedef struct s_pipex
 {
 	t_arg	arg;
 	t_pidfd	fd;
-	t_pid	pid;
 	t_error	error;
 }	t_pipex;
+
+void	arg_check(int ac, char **av, t_error *err);
+void	error_print_notsuch(char *str, t_error *err);
+void	error_print_permission(char *str, t_error *err);
+void	error_print_cmd(char *arg, t_error *err);
+void	get_arg(int ac, char **av, t_arg *arg);
+char	**div_str(char **str);
+void	file_open(t_arg *arg, t_pidfd *pidfd);
+void	pipex(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp);
+void	free_args(t_arg *arg);
+void	free_arg(char **arg);
+void	do_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp);
+char	*get_cmd_path(char *arg, char **envp);
 
 #endif

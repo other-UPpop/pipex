@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:56:59 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 21:58:05 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:53:17 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,19 @@ static char	*get_total_arg(int ac, char **av, char *str)
 	return (str);
 }
 
-static int	count_cmd(char	**str)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i][0] != '-' || i == 0)
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-void	get_arg(int ac, char **av, t_arg *arg, t_error *err)
+void	get_arg(int ac, char **av, t_arg *arg)
 {
 	char	*str;
-	int		*len;
+	int		len;
 
 	len = get_total_len(ac, av);
-	str = (char *)malloc(len +1);
+	str = (char *)malloc(len + 1);
 	if (!str)
 		return ;
 	str = get_total_arg(ac, av, str);
 	if (str)
 		arg->s_arg = ft_split(str, ' ');
 	if (arg->s_arg)
-		arg->c_arg = div_str(arg->s_arg, err);
+		arg->c_arg = div_str(arg->s_arg);
 	free(str);
 }

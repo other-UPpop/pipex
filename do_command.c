@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 20:25:26 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 21:52:32 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:29:06 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	pid1_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)
 {
 	if (err->in_file == false)
 	{
-		free_arg(arg);
+		free_args(arg);
 		exit(0);
 	}
 	dup2(pidfd->in_fd, STDIN_FILENO);
@@ -74,7 +74,7 @@ static void	pid1_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)
 	close(pidfd->in_fd);
 	close(pidfd->out_fd);
 	execve_cmd1(arg->c_arg[1], arg, err, envp);
-	free_arg(arg);
+	free_args(arg);
 	exit(0);
 }
 
@@ -82,7 +82,7 @@ static void	pid2_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)
 {
 	if (err->out_file == false)
 	{
-		free_arg(arg);
+		free_args(arg);
 		exit(1);
 	}
 	dup2(pidfd->pipefd[0], STDIN_FILENO);
@@ -92,7 +92,7 @@ static void	pid2_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)
 	close(pidfd->in_fd);
 	close(pidfd->out_fd);
 	execve_cmd2(arg->c_arg[2], arg, err, envp);
-	free_arg(arg);
+	free_args(arg);
 	exit(127);
 }
 

@@ -6,13 +6,13 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:38:43 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 21:50:22 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:26:31 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	error_pirnt_notsuch(char *str, t_error *err)
+void	error_print_notsuch(char *str, t_error *err)
 {
 	char	*str1;
 	char	*str2;
@@ -25,7 +25,7 @@ void	error_pirnt_notsuch(char *str, t_error *err)
 	err->log++;
 }
 
-void	error_pirnt_permission(char *str, t_error *err)
+void	error_print_permission(char *str, t_error *err)
 {
 	char	*str1;
 	char	*str2;

@@ -6,15 +6,15 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:28:31 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:04:24 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:55:47 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pipe_create(t_arg *arg, t_pidfd *pidfd)
+static int	pipe_create(t_arg *arg, t_pidfd *pidfd)
 {
-	if (pipe(pidfd->pipefd[2]) == -1)
+	if (pipe(pidfd->pipefd) == -1)
 	{
 		free_args(arg);
 		perror("pipe");
@@ -23,7 +23,7 @@ int	pipe_create(t_arg *arg, t_pidfd *pidfd)
 	return (0);
 }
 
-void	parent_close(t_pidfd *pidfd)
+static void	parent_close(t_pidfd *pidfd)
 {
 	close(pidfd->pipefd[0]);
 	close(pidfd->pipefd[1]);
@@ -31,7 +31,7 @@ void	parent_close(t_pidfd *pidfd)
 	close(pidfd->out_fd);
 }
 
-static int	wait_free(t_arg *arg, t_pidfd *pidfd)
+static void	wait_free(t_arg *arg, t_pidfd *pidfd)
 {
 	int	status1;
 	int	status2;
@@ -47,7 +47,7 @@ void	pipex(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)
 {
 	if (pipe_create(arg, pidfd) == -1)
 		return ;
-	do_cmd(arg, pidfd, err);
+	do_cmd(arg, pidfd, err, envp);
 	parent_close(pidfd);
 	wait_free(arg, pidfd);
 }

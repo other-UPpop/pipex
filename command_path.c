@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 21:08:06 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 21:21:33 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:27:32 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ static char	*get_ok_path(char **div_path, char *ok_path, char *arg)
 		free(tmp);
 		if (access(ok_path, (X_OK | F_OK)) == 0)
 		{
-			free_args(div_path);
+			free_arg(div_path);
 			return (ok_path);
 		}
 		free(ok_path);
 		i++;
 	}
-	free_args(div_path);
+	free_arg(div_path);
 	return (NULL);
 }
 

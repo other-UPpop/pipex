@@ -6,11 +6,27 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:42:05 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:00:39 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 22:53:44 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static size_t	count_cmd(char	**str)
+{
+	size_t	count;
+	size_t	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i][0] != '-' || i == 0)
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 static char	*str_join(char **cmd, size_t j, size_t i, char **str)
 {
@@ -26,7 +42,7 @@ static char	*str_join(char **cmd, size_t j, size_t i, char **str)
 static char	*sleep_cmd(char **cmd, char **str, size_t *i, size_t j)
 {
 	char	*tmp;
-	char	*str;
+	char	*num_str;
 	int		num;
 
 	num = 0;
@@ -34,18 +50,18 @@ static char	*sleep_cmd(char **cmd, char **str, size_t *i, size_t j)
 		&& ft_isdigit(ft_atoi(str[*i + 1])) != 0)
 	{
 		num += ft_atoi(str[*i + 1]);
-		*i++;
+		*i += 1;
 	}
 	tmp = ft_strjoin(cmd[j], " ");
 	free (cmd[j]);
-	str = ft_itoa(num);
-	cmd[j] = ft_strjoin(tmp, str);
-	free (str);
+	num_str = ft_itoa(num);
+	cmd[j] = ft_strjoin(tmp, num_str);
+	free (num_str);
 	free (tmp);
 	return (cmd[j]);
 }
 
-static char	**put_cmd(char **cmd, char **str, t_error *err)
+static char	**put_cmd(char **cmd, char **str)
 {
 	size_t	i;
 	size_t	j;
@@ -72,7 +88,7 @@ static char	**put_cmd(char **cmd, char **str, t_error *err)
 	return (cmd);
 }
 
-static char	**div_str(char **str, t_error *err)
+char	**div_str(char **str)
 {
 	char	**cmd;
 	int		count;
@@ -81,6 +97,6 @@ static char	**div_str(char **str, t_error *err)
 	cmd = (char **)ft_calloc(count + 1, sizeof(char *));
 	if (!cmd)
 		return (NULL);
-	put_cmd(cmd, str, err);
+	put_cmd(cmd, str);
 	return (cmd);
 }
