@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 20:25:26 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:29:06 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:33:17 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	execve_cmd1(char *cmd, t_arg *arg, t_error *err, char **envp)
 	execve(cmd_path, args, envp);
 	if (err->log < 2)
 		error_print_cmd(args[0], err);
+	free(cmd_path);
 	free_arg(args);
 	free_args(arg);
 	exit(1);
@@ -55,6 +56,7 @@ static void	execve_cmd2(char *cmd, t_arg *arg, t_error *err, char **envp)
 	execve(cmd_path, args, envp);
 	if (err->log < 2)
 		error_print_cmd(args[0], err);
+	free(cmd_path);
 	free_arg(args);
 	free_args(arg);
 	exit(127);

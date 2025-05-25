@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 21:08:06 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:27:32 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:44:57 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static char	*get_ok_path(char **div_path, char *ok_path, char *arg)
 	while (div_path[i])
 	{
 		tmp = ft_strjoin(div_path[i], "/");
+		if (!tmp)
+			return (NULL);
 		ok_path = ft_strjoin(tmp, arg);
+		free(tmp);
 		if (!ok_path)
 			return (NULL);
-		free(tmp);
 		if (access(ok_path, (X_OK | F_OK)) == 0)
 		{
 			free_arg(div_path);
@@ -70,9 +72,9 @@ char	*get_cmd_path(char *arg, char **envp)
 	if (!all_path)
 		return (NULL);
 	div_path = ft_split(all_path, ':');
+	free(all_path);
 	if (!div_path)
 		return (NULL);
-	free(all_path);
 	ok_path = get_ok_path(div_path, ok_path, arg);
 	return (ok_path);
 }
