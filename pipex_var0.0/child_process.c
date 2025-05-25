@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 20:17:04 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/21 02:24:32 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/23 23:28:53 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void	pid1_cmd(t_arg arg, t_fd fd, int pipefd[2], char **envp)
 	}
 	dup2(fd.get_fd, STDIN_FILENO);
 	dup2(pipefd[1], STDOUT_FILENO);
+	if (STDIN_FILENO == 1)
 	close(pipefd[0]);
 	close(pipefd[1]);
 	close(fd.get_fd);
-	close(fd.out_fd);
+	close(fd.out_fd);	
 	execve_cmd(arg.c_arg[1], envp, arg);
 	free_args(arg.c_arg);
 	free_args(arg.s_arg);
