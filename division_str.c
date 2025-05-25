@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:42:05 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 00:06:58 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:54:17 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ static char	*sleep_cmd(char **cmd, char **str, size_t *i, size_t j)
 	int		num;
 
 	num = 0;
-	while (ft_atoi(str[*i + 1]) != 0
-		|| ft_isdigit(ft_atoi(str[*i + 1])) == 1)
+	while (str[*i + 1] && ft_isdigit(str[*i + 1][0]))
 	{
 		num += ft_atoi(str[*i + 1]);
 		*i += 1;
