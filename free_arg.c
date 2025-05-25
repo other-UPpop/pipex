@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:53 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 23:51:56 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:26:09 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_args(t_arg *arg)
 	size_t	i;
 
 	i = 0;
+	if (!arg)
+		return ;
 	if (arg->s_arg)
 	{
 		while (arg->s_arg[i])
