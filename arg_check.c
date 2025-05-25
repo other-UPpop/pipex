@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:46:43 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 01:35:56 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:41:13 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	arg_check(int ac, char **av, t_error *err)
 	}
 	if (access(av[4], (W_OK)) != 0)
 	{
+		if (access(av[4], (F_OK)) != 0)
+			return ;
 		error_print_permission(av[4], err);
 		err->out_file = false;
 		err->return_num = 1;
