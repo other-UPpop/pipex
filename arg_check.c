@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:46:43 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:24:06 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 23:22:18 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	arg_check(int ac, char **av, t_error *err)
 {
-	if (ac < 5 | ac > 5)
+	if (ac < 5 || ac > 5)
 		exit (0);
+	printf("ok");
 	if (access(av[1], (F_OK | R_OK)) != 0)
 	{
 		err->in_file = false;
