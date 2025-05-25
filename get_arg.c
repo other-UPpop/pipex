@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:56:59 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 22:53:17 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 00:00:49 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_total_len(int ac, char **av)
 	{
 		if (ft_strlen(av[i]) == 0)
 			exit(0);
-		total = ft_strlen(av[i]) + 1;
+		total += ft_strlen(av[i]) + 1;
 		i++;
 	}
 	return (total);

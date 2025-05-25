@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:53 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/25 23:50:32 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/25 23:51:56 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ void	free_arg(char **arg)
 	size_t	i;
 
 	i = 0;
-	while (arg[i])
+	if (arg)
 	{
-		free(arg[i]);
-		i++;
+		while (arg[i])
+		{
+			free(arg[i]);
+			i++;
+		}
+		free(arg);
 	}
-	free(arg);
 }
