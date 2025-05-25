@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:28:31 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 01:30:53 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:36:13 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ static void	parent_close(t_pidfd *pidfd)
 	close(pidfd->pipefd[1]);
 	close(pidfd->in_fd);
 	close(pidfd->out_fd);
-}
-
-void	print_arg(t_arg *arg)
-{
-	int i = 0;
-	while (arg->c_arg[i])
-	{
-		printf("%s\n", arg->c_arg[i++]);
-	}
 }
 
 static void	wait_free(t_arg *arg, t_pidfd *pidfd)
