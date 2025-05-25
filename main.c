@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 20:59:47 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 01:26:55 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:28:56 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int ac, char **av, char **envp)
 	get_arg(ac, av, &arg);
 	file_open(&arg, &pidfd, &err);
 	pipex(&arg, &pidfd, &err, envp);
-	free_args(&arg);
+	free_arg(arg.c_arg);
+	free_arg(arg.s_arg);
 	return (err.return_num);
 }
