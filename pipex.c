@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:28:31 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 01:24:48 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:30:53 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ static void	wait_free(t_arg *arg, t_pidfd *pidfd)
 	status2 = 0;
 	waitpid(pidfd->p1, &status1, 0);
 	waitpid(pidfd->p2, &status2, 0);
-	print_arg(arg);
-	//free_args(arg);
+	free_args(arg);
 }
 
 void	pipex(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp)

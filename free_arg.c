@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:53 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 00:26:09 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:30:29 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_args(t_arg *arg)
 	{
 		while (arg->s_arg[i])
 		{
-			free(arg->s_arg);
+			free(arg->s_arg[i]);
 			i++;
 		}
 		free(arg->s_arg);
@@ -33,7 +33,7 @@ void	free_args(t_arg *arg)
 	{
 		while (arg->c_arg[i])
 		{
-			free(arg->c_arg);
+			free(arg->c_arg[i]);
 			i++;
 		}
 		free(arg->c_arg);
