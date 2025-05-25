@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 01:10:21 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 00:21:49 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 03:29:55 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	error_print_notsuch(char *str, t_error *err);
 void	error_print_permission(char *str, t_error *err);
 void	error_print_cmd(char *arg, t_error *err);
 void	get_arg(int ac, char **av, t_arg *arg);
-char	**div_str(char **str);
 void	pipex(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp);
 void	free_args(t_arg *arg);
 void	free_arg(char **arg);
 void	do_cmd(t_arg *arg, t_pidfd *pidfd, t_error *err, char **envp);
 char	*get_cmd_path(char *arg, char **envp);
+char	**div_cmd(char **av);
 void	file_open(t_arg *arg, t_pidfd *pidfd, t_error *err);
 
 #endif

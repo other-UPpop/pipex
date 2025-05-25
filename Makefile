@@ -6,7 +6,7 @@
 #    By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 20:34:14 by rohta             #+#    #+#              #
-#    Updated: 2025/05/25 22:15:18 by rohta            ###   ########.fr        #
+#    Updated: 2025/05/26 03:28:10 by rohta            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_DIR = .
 OBJ_DIR = .
 LIBFT_DIR = ./libft
 
-SRC = main.c arg_check.c command_path.c  division_str.c do_command.c \
+SRC = main.c arg_check.c command_path.c  division_cmd.c do_command.c \
 		error_print.c file_open.c free_arg.c get_arg.c pipex.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

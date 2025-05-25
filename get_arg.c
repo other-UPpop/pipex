@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:56:59 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 00:00:49 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 03:31:37 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	get_arg(int ac, char **av, t_arg *arg)
 	if (str)
 		arg->s_arg = ft_split(str, ' ');
 	if (arg->s_arg)
-		arg->c_arg = div_str(arg->s_arg);
+		arg->c_arg = div_cmd(av);
 	free(str);
 }
