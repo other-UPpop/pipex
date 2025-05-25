@@ -6,7 +6,7 @@
 /*   By: rohta <rohta@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:28:31 by rohta             #+#    #+#             */
-/*   Updated: 2025/05/26 01:55:26 by rohta            ###   ########.fr       */
+/*   Updated: 2025/05/26 01:57:39 by rohta            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	wait_free(t_arg *arg, t_pidfd *pidfd, t_error *err)
 	else if (status2 == 256)
 		err->return_num = 1;
 	else if (status2 == 32512)
-		err->return_num = 127;		
+		err->return_num = 127;
 	free_args(arg);
 }
 
